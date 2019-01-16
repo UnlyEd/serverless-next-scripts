@@ -1,0 +1,13 @@
+{
+  "name": "serverless-next-scripts",
+  "version": "1.0.0",
+  "description": "plugin serverless to help process.env with nextjs",
+  "main": "index.js",
+  "repository": "git@github.com:UnlyEd/serverless-next-scripts.git",
+  "author": "unlyEd",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "3.5.3",
+    "chalk": "2.4.2"
+  }
+}
