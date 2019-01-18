@@ -88,17 +88,12 @@ class ServerlessNextEnv {
    */
   command() {
     return new Promise(resolve => {
-      console.log(this.offline);
       if (!this.offline) {
         log.std('slsScripts local should be defined in serverless');
         return resolve();
       }
 
-      this.process = spawn(
-        this.offline.cmd,
-        this.offline.args,
-        this.offline.config,
-      );
+      this.process = spawn(this.offline.cmd, this.offline.args, this.offline.config);
 
       this.process.on('error', (err) => {
         log.processError(err.toString('utf8'), this.offline.logName);

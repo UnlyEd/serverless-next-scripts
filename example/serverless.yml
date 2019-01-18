@@ -4,7 +4,7 @@ service: serverless-example
 frameworkVersion: "=1.32.0"
 
 plugins:
-  - serverless-next-scripts
+  - serverless-scripts-env
   - serverless-webpack
   - serverless-offline
 
