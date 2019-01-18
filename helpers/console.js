@@ -2,9 +2,7 @@ const chalk = require('chalk');
 
 const serviceName = 'Serverless-scripts-env';
 
-const logService = (color = 'blue', name) => {
-  return chalk[color].bold(`${name}: `);
-};
+const logService = (color = 'blue', name) => chalk[color].bold(`${name}: `);
 
 /**
  * Red error Log for child process

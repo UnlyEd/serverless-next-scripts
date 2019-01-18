@@ -3816,7 +3816,7 @@ serverless-offline@4.1.3:
 
 serverless-scripts-env@UnlyEd/serverless-next-scripts.git#v1.0.0_fix_refactor_plugin:
   version "1.0.0"
-  resolved "https://codeload.github.com/UnlyEd/serverless-next-scripts/tar.gz/79b0bbc28b56d1bdd5cd270880810e32d0843301"
+  resolved "https://codeload.github.com/UnlyEd/serverless-next-scripts/tar.gz/4f619b9f126c78cd4eed4d9514cd4fd6ca6d21ec"
   dependencies:
     bluebird "3.5.3"
     chalk "2.4.2"

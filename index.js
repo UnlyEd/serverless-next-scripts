@@ -8,11 +8,10 @@ const log = require('./helpers/console');
 
 class ServerlessNextEnv {
   constructor(serverless) {
-
     this.env = serverless.service.provider.environment;
     this.custom = serverless.service.custom;
 
-    this.config = this.custom['slsScripts'];
+    this.config = this.custom.slsScripts;
 
     this.hooks = {
       'before:package:initialize': () => BbPromise.bind(this)
@@ -32,7 +31,6 @@ class ServerlessNextEnv {
    * @returns {*}
    */
   validate() {
-    console.log(this.config);
     if (!this.config) {
       log.std('There is no configuration set in serverless.yml');
       return BbPromise.resolve();
@@ -63,7 +61,8 @@ class ServerlessNextEnv {
           }
           log.process(stdout, this.build.logName);
           return resolve();
-        });
+        },
+      );
     });
   }
 
@@ -72,10 +71,9 @@ class ServerlessNextEnv {
    * @returns {*}
    */
   init() {
-
     const scripts = initValidObjectsScripts(this.config, this.env);
 
-    scripts.map(script => {
+    scripts.forEach((script) => {
       this[script.name] = script;
     });
 
@@ -87,7 +85,7 @@ class ServerlessNextEnv {
    * @returns {Promise<any>}
    */
   command() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       if (!this.offline) {
         log.std('slsScripts local should be defined in serverless');
         return resolve();
@@ -117,14 +115,12 @@ class ServerlessNextEnv {
    */
   listenToSigInt() {
     process.on('SIGINT', () => {
-      const { name, cmd, logName, args } = this.offline;
+      const { name, cmd, args } = this.offline;
       log.std(`Got SIGINT signal. Halting ${name} with ${cmd} ${args.join(' ')}${this.process.pid ? `, process ${this.process.pid}` : ''}`);
     });
 
     return BbPromise.resolve();
   }
-
 }
 
 module.exports = ServerlessNextEnv;
-
