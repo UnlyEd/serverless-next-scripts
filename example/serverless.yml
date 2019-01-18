@@ -4,6 +4,7 @@ service: serverless-example
 frameworkVersion: "=1.32.0"
 
 plugins:
+  - serverless-next-scripts
   - serverless-webpack
   - serverless-offline
 
@@ -12,25 +13,30 @@ custom:
     port: 3000
   slsScripts:
     offline:
-      logName: hello
+      logName: next server
       script:
         cmd: sls print
         args:
+      path: ./
       env:
-        include:
         exclude:
+          - LOG_NAME
     build:
-      logName: hello
+      logName: next build
       script:
-        cmd: sls print
+        cmd: next build
         args:
       env:
-        include:
         exclude:
+          - GROUP_NAME
+      path: # default process.cwd()
 
 provider:
   name: aws
   runtime: nodejs6.10
+  environment:
+    GROUP_NAME: staging
+    LOG_NAME: production
 
 functions:
   hello:

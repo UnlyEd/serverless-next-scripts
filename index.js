@@ -13,14 +13,13 @@ class ServerlessNextEnv {
     this.custom = serverless.service.custom;
 
     this.config = this.custom['slsScripts'];
-    console.log(this)
 
     this.hooks = {
       'before:package:initialize': () => BbPromise.bind(this)
         .then(this.validate)
         .then(this.init)
         .then(this.exec),
-      'before:offline:start:init': () => BbPromise.bind(this)
+      'before:offline:start': () => BbPromise.bind(this)
         .then(this.validate)
         .then(this.init)
         .then(this.command)
@@ -33,15 +32,14 @@ class ServerlessNextEnv {
    * @returns {*}
    */
   validate() {
-    console.log('jsdkljdkljsdjsjd')
-    if(!this.config) {
+    console.log(this.config);
+    if (!this.config) {
       log.std('There is no configuration set in serverless.yml');
       return BbPromise.resolve();
     }
-    if(typeof this.config !== 'object'){
+    if (typeof this.config !== 'object') {
       return BbPromise.reject(log.error(`Config slsScripts must be an object, but received ${typeof this.config}`));
     }
-    console.log(1)
     return BbPromise.resolve();
   }
 
@@ -51,7 +49,7 @@ class ServerlessNextEnv {
    */
   exec() {
     return new Promise((resolve, reject) => {
-      if (!this.offline) {
+      if (!this.build) {
         log.std('slsScripts build should be defined in serverless');
         return resolve();
       }
@@ -60,10 +58,10 @@ class ServerlessNextEnv {
         `${this.build.config} ${this.build.args}`,
         (error, stdout) => {
           if (error) {
-            log.processError(`exec error: ${error}`);
+            log.processError(`exec error: ${error}`, this.build.logName);
             return reject();
           }
-          log.process(stdout);
+          log.process(stdout, this.build.logName);
           return resolve();
         });
     });
@@ -78,9 +76,8 @@ class ServerlessNextEnv {
     const scripts = initValidObjectsScripts(this.config, this.env);
 
     scripts.map(script => {
-      this[script.cmdName] = script;
+      this[script.name] = script;
     });
-    console.log(2)
 
     return BbPromise.resolve();
   }
@@ -91,7 +88,7 @@ class ServerlessNextEnv {
    */
   command() {
     return new Promise(resolve => {
-
+      console.log(this.offline);
       if (!this.offline) {
         log.std('slsScripts local should be defined in serverless');
         return resolve();
@@ -100,19 +97,19 @@ class ServerlessNextEnv {
       this.process = spawn(
         this.offline.cmd,
         this.offline.args,
-        this.offline.config
-        );
+        this.offline.config,
+      );
 
       this.process.on('error', (err) => {
-        log.processError(err.toString('utf8'));
+        log.processError(err.toString('utf8'), this.offline.logName);
       });
 
       this.process.stdout.on('data', (data) => {
-        log.process(data.toString('utf8'));
+        log.process(data.toString('utf8'), this.offline.logName);
       });
 
       this.process.stderr.on('data', (data) => {
-        log.processError(data.toString('utf8'));
+        log.processError(data.toString('utf8'), this.offline.logName);
       });
 
       return resolve();
@@ -125,7 +122,8 @@ class ServerlessNextEnv {
    */
   listenToSigInt() {
     process.on('SIGINT', () => {
-      log.process(`cmd: ${this.offline.name} ${this.args.join(' ')}, stop process ${this.process.pid}`);
+      const { name, cmd, logName, args } = this.offline;
+      log.std(`Got SIGINT signal. Halting ${name} with ${cmd} ${args.join(' ')}${this.process.pid ? `, process ${this.process.pid}` : ''}`);
     });
 
     return BbPromise.resolve();
@@ -134,3 +132,4 @@ class ServerlessNextEnv {
 }
 
 module.exports = ServerlessNextEnv;
+

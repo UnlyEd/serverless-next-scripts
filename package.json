@@ -1,5 +1,5 @@
 {
-  "name": "serverless-next-scripts",
+  "name": "serverless-scripts-env",
   "version": "1.0.0",
   "description": "plugin serverless to help process.env with nextjs",
   "main": "index.js",

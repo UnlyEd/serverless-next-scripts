@@ -1,41 +1,49 @@
 const chalk = require('chalk');
 
-const logName = 'Serverless-scripts-env';
+const serviceName = 'Serverless-scripts-env';
+
+const logService = (color = 'blue', name) => {
+  return chalk[color].bold(`${name}: `);
+};
+
 /**
  * Red error Log for child process
  * @param name
+ * @param color
  * @param str
  */
-const processError = (str, name = logName) => {
-  console.log(chalk.bgRed.white.bold(`${name}: `), chalk.red(str));
+const processError = (str, name = serviceName, color = 'red') => {
+  console.log(logService(color, name), chalk[color](str));
 };
 
 /**
  * Blue log for child process
  * @param name
+ * @param color
  * @param str
  */
-const process = (str, name = logName) => {
-  console.log(chalk.bgBlue.black.bold(`${name}: `), chalk.blue(str));
+const process = (str, name = serviceName, color = 'blue') => {
+  console.log(logService(color, name), chalk[color](str));
 };
 
 /**
- *
  * Yellow Log plugin
  * @param name
+ * @param color
  * @param str
  */
-const std = (str, name = logName) => {
-  console.log(chalk.bgYellow.black.bold(`${name}: `), chalk.yellow.bold(str));
+const std = (str, name = serviceName, color = 'yellow') => {
+  console.log(logService(color, name), chalk[color](str));
 };
 
 /**
  * Red error Log plugin
  * @param name
+ * @param color
  * @param str
  */
-const error = (str, name = logName) => {
-  console.log(chalk.bgRed.white.bold(`${name}: `), chalk.yellow.bold(str));
+const error = (str, name = serviceName, color = 'red') => {
+  console.log(logService(color, name), chalk[color](str));
 };
 
 module.exports = {
