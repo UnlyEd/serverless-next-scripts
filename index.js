@@ -36,7 +36,8 @@ class ServerlessNextEnv {
       return BbPromise.resolve();
     }
     if (typeof this.config !== 'object') {
-      return BbPromise.reject(log.error(`Config slsScripts must be an object, but received ${typeof this.config}`));
+      log.error(`Config slsScripts must be an object, but received ${typeof this.config}`);
+      return BbPromise.reject('Config slsScripts must be an object');
     }
     return BbPromise.resolve();
   }

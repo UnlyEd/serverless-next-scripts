@@ -36,7 +36,7 @@ const constructObjectScript = (childConfig, name, serverlessEnv) => {
     error(`Received: ${path} ,you must provide an absolute path to command ${name} in serverless.yml, then default to current working directory`);
   }
 
-  const blackList = (env.exclude !== null && env.exclude) ? env.exclude : [];
+  const blackList = env ? env.exclude || [] : [];
 
   return {
     name,

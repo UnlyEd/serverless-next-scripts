@@ -1,6 +1,6 @@
 const omit = require('lodash.omit');
 
-const { initValidObjectsScripts, constructObjectScript } = require('./checkValidScript');
+const { initValidObjectsScripts, constructObjectScript } = require('../helpers/checkValidScript');
 
 const config = {
   offline: {

@@ -1,4 +1,4 @@
-const log = require('./console');
+const log = require('../helpers/console');
 
 describe('console', () => {
   global.console = {
