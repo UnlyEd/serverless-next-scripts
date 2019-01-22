@@ -47,14 +47,16 @@ class ServerlessNextEnv {
    * @returns {Promise<any>}
    */
   exec() {
+    const cmd = `${this.build.cmd} ${this.build.args.join(' ')}`;
     return new Promise((resolve, reject) => {
       if (!this.build) {
         log.std('slsScripts build should be defined in serverless');
         return resolve();
       }
+      log.std(cmd);
       return exec(
-        this.build.cmd,
-        `${this.build.config} ${this.build.args}`,
+        cmd,
+        this.build.config,
         (error, stdout) => {
           if (error) {
             log.processError(`exec error: ${error}`, this.build.logName);
@@ -62,7 +64,7 @@ class ServerlessNextEnv {
           }
           log.process(stdout, this.build.logName);
           return resolve();
-        },
+        }
       );
     });
   }
@@ -77,7 +79,6 @@ class ServerlessNextEnv {
     scripts.forEach((script) => {
       this[script.name] = script;
     });
-
     return BbPromise.resolve();
   }
 

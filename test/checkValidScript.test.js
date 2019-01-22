@@ -56,8 +56,8 @@ describe('constructObjectScript', () => {
             cwd: process.cwd(),
             env: Object.assign({}, env, process.env),
           },
-        },
-      ),
+        }
+      )
     );
     expect(console.log).toHaveBeenCalledTimes(2);
   });
@@ -101,7 +101,7 @@ describe('initValidObjectsScripts', () => {
                 cwd: '/Users/sl-1/Documents/serverless-next-scripts',
               },
         },
-      ]),
+      ])
     );
     expect(console.log).toHaveBeenCalledTimes(4);
   });
@@ -141,7 +141,7 @@ describe('initValidObjectsScripts', () => {
                 cwd: '/Users/sl-1/Documents/serverless-next-scripts/server',
               },
         },
-      ]),
+      ])
     );
     expect(scripts[0].config.env.SECRET_KEY).toEqual('ABC10');
     expect(scripts[1].config.env.SECRET_KEY).toEqual(undefined);

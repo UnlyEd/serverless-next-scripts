@@ -13,32 +13,36 @@ custom:
     port: 3000
   slsScripts:
     offline:
-      logName: next server
+      logName: Serverless-scripts-env
+      script:
+        cmd: nodemon
+        args:
+          - ./server/index.js
+      env:
+        exclude:
+          - SECRET_KEY
+    build:
+      logName: Serverless-scripts-env
       script:
         cmd: sls print
-        args:
-      path: ./
       env:
         exclude:
-          - LOG_NAME
-    build:
-      logName: next build
-      script:
-        cmd: next build
-        args:
-      env:
-        exclude:
-          - GROUP_NAME
-      path: # default process.cwd()
+          - PUBLIC_KEY
 
 provider:
   name: aws
   runtime: nodejs6.10
   environment:
-    GROUP_NAME: staging
-    LOG_NAME: production
+    SECRET_KEY: c7285511-8830-421b-bd89-2847fede8906
+    PUBLIC_KEY: b8e7abb6-b063-4a59-acf5-6552679beae7
+    PORT_SERVER: 3003
 
 functions:
   hello:
     handler: handler.hello
+    events:
+      - http:
+          method: GET
+          path: /
+
 

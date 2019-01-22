@@ -42,7 +42,7 @@ const constructObjectScript = (childConfig, name, serverlessEnv) => {
     name,
     logName: `[${name}] ${logName}`,
     cmd: script.cmd,
-    args: script.args || [],
+    args: Array.isArray(script.args) ? script.args : [],
     config: {
       env: Object.assign(omit(serverlessEnv, blackList), process.env),
       cwd: absolutePath, // XXX default current working directory

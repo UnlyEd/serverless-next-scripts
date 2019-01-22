@@ -47,7 +47,7 @@ describe('@unly/serverless-scripts-env', () => {
                 env: Object.assign({}, process.env),
                 cwd: '/Users/sl-1/Documents/serverless-next-scripts/server',
               },
-        }),
+        })
       );
       expect(slsPlugin.start).toBeUndefined();
     });
@@ -82,7 +82,7 @@ describe('@unly/serverless-scripts-env', () => {
             env: expect.any(Object),
             cwd: expect.any(String),
           }),
-        }),
+        })
       );
       expect(slsPlugin.build).toHaveProperty('cmd', 'start');
       expect(slsPlugin.start).toBeUndefined();
