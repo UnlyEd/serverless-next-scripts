@@ -1,0 +1,48 @@
+
+service: serverless-example
+
+frameworkVersion: "=1.32.0"
+
+plugins:
+  - serverless-scripts-env
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    port: 3000
+  slsScripts:
+    offline:
+      logName: Serverless-scripts-env
+      script:
+        cmd: nodemon
+        args:
+          - ./server/index.js
+      env:
+        exclude:
+          - SECRET_KEY
+    build:
+      logName: Serverless-scripts-env
+      script:
+        cmd: sls print
+      env:
+        exclude:
+          - PUBLIC_KEY
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  environment:
+    SECRET_KEY: c7285511-8830-421b-bd89-2847fede8906
+    PUBLIC_KEY: b8e7abb6-b063-4a59-acf5-6552679beae7
+    PORT_SERVER: 3003
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          method: GET
+          path: /
+
+

@@ -1,13 +1,34 @@
 {
-  "name": "serverless-next-scripts",
+  "name": "serverless-scripts-env",
   "version": "1.0.0",
   "description": "plugin serverless to help process.env with nextjs",
   "main": "index.js",
   "repository": "git@github.com:UnlyEd/serverless-next-scripts.git",
   "author": "unlyEd",
   "license": "MIT",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "lint": "eslint . --cache --fix",
+    "test:once": "jest",
+    "test": "jest --watch",
+    "coverage": "jest --coverage",
+    "release:alpha": "npm publish --tag alpha --access=public",
+    "release:latest": "npm publish --tag latest --access=public"
+  },
   "dependencies": {
     "bluebird": "3.5.3",
-    "chalk": "2.4.2"
+    "chalk": "2.4.2",
+    "lodash.omit": "4.5.0",
+    "lodash.pick": "4.4.0"
+  },
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.14",
+    "jest": "21.2.1",
+    "serverless": "1.36.1"
   }
 }
