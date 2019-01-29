@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/UnlyEd/serverless-scripts-env.svg?branch=master)](https://travis-ci.com/UnlyEd/serverless-scripts-env)
+
 # Serverless Scripts Env
 
 ## Introduction
