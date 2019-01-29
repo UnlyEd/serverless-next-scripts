@@ -18,7 +18,7 @@ const env = {
 
 global.console = {
   log: jest.fn(),
-  warn: console.warn,
+  warn: jest.fn(),
 };
 
 describe('constructObjectScript', () => {

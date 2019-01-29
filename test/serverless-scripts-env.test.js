@@ -9,7 +9,7 @@ const serverless = (custom) => {
 };
 
 global.console = {
-  warn: console.warn,
+  warn: jest.fn(),
   log: jest.fn(),
   error: console.error,
 };

@@ -1,10 +1,28 @@
-# Serverless scripts env
+# Serverless Scripts Env
 
 ## Introduction
 
 This plugin aims to answer a specific need and to simplify the assignment of environment variables with serverless either front-end or back-end.
 
 This plugin officially supports Node.js **6.10** and **8.10**.
+
+<!-- toc -->
+
+- [Installation](#installation)
+- [Usage](#usage)
+  * [Step 1: Load the Plugin](#step-1-load-the-plugin)
+  * [Step 2: Configure your `serverless.yml`](#step-2-configure-your-serverlessyml)
+- [Configuration of `slsScripts` object:](#configuration-of-slsscripts-object)
+    + [`offline` & `build` object:](#offline--build-object)
+  * [Try it out yourself](#try-it-out-yourself)
+- [API](#api)
+- [Contributing](#contributing)
+  * [Getting started](#getting-started)
+  * [Test](#test)
+  * [Releasing and publishing](#releasing-and-publishing)
+- [License](#license)
+
+<!-- tocstop -->
 
 ## Installation
 
@@ -97,3 +115,45 @@ To test this plugin, you can clone this repository.
 Go to `examples/`, and follow the README.
 
 ---
+
+## API
+
+[API](./API.md)
+
+---
+
+## Contributing
+
+We gladly accept PRs, but please open an issue first so we can discuss it beforehand.
+
+### Getting started
+
+```
+yarn start # Shortcut - Runs linter + tests in concurrent mode (watch mode)
+
+OR run each process separately for finer control
+
+yarn lint
+yarn test
+```
+
+### Test
+
+```
+yarn test # Run all tests, interactive and watch mode
+yarn test:once
+yarn test:coverage
+```
+
+### Releasing and publishing
+
+```
+yarn releaseAndPublish # Shortcut - Will prompt for bump version, commit, create git tag, push commit/tag and publish to NPM
+
+yarn release # Will prompt for bump version, commit, create git tag, push commit/tag
+npm publish # Will publish to NPM
+```
+
+## License
+
+MIT

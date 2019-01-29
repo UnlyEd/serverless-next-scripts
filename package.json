@@ -8,15 +8,34 @@
   "license": "MIT",
   "jest": {
     "verbose": true,
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ]
+  },
+  "files": [
+    "/helpers",
+    "/API.md"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "scripts": {
-    "lint": "eslint . --cache --fix",
-    "test:once": "jest",
-    "test": "jest --watch",
-    "coverage": "jest --coverage",
-    "release:alpha": "npm publish --tag alpha --access=public",
-    "release:latest": "npm publish --tag latest --access=public"
+    "start": "cross-env-shell 'concurrently -p '{name}' -n 'lint,test' -c 'gray.bgWhite,green.bgWhite' \"yarn lint\" \"yarn test\"'",
+    "lint": "esw --fix --watch",
+    "lint:once": "eslint . --cache --fix",
+    "preversion": "yarn lint:once && yarn test:once && yarn doc:toc",
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "yarn publish:preview && cli-confirm \"Do you really want to release a new version? Please check the files that will be publicly released first.\"",
+    "publish:preview": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
+    "release": "yarn bump --prompt --commit --tag --push",
+    "releaseAndPublish": "yarn release && npm publish",
+    "doc:toc": "yarn markdown-toc --maxdepth 4 -i README.md",
+    "test": "NODE_ENV=test jest --watch",
+    "test:once": "NODE_ENV=test jest",
+    "test:coverage": "NODE_ENV=test jest --coverage"
   },
   "dependencies": {
     "bluebird": "3.5.3",
@@ -25,10 +44,20 @@
     "lodash.pick": "4.4.0"
   },
   "devDependencies": {
+    "@unly/cli-confirm": "1.1.1",
+    "cli-confirm": "1.0.1",
+    "concurrently": "4.1.0",
+    "cross-env": "5.2.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14",
+    "eslint-watch": "4.0.2",
     "jest": "21.2.1",
-    "serverless": "1.36.1"
+    "markdown-toc": "1.2.0",
+    "serverless": "1.36.1",
+    "version-bump-prompt": "4.2.2"
+  },
+  "engines": {
+    "node": ">=6.10"
   }
 }

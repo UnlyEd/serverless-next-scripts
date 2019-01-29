@@ -43,7 +43,7 @@ class ServerlessNextEnv {
   }
 
   /**
-   *
+   * Execute a process with build arguments
    * @returns {Promise<any>}
    */
   exec() {
@@ -83,7 +83,7 @@ class ServerlessNextEnv {
   }
 
   /**
-   * Run a new child process, listen on error, and log all console(log and error) of this process
+   * Run a new child process, listen on error, and log all console(log and error) with offline arguments
    * @returns {Promise<any>}
    */
   command() {
