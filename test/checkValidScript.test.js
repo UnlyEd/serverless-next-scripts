@@ -98,7 +98,7 @@ describe('initValidObjectsScripts', () => {
           config:
               {
                 env: Object.assign({}, nextEnv, process.env),
-                cwd: '/Users/sl-1/Documents/serverless-next-scripts',
+                cwd: process.cwd(),
               },
         },
       ])
@@ -127,7 +127,7 @@ describe('initValidObjectsScripts', () => {
           config:
               {
                 env: Object.assign({}, nextEnv, process.env),
-                cwd: '/Users/sl-1/Documents/serverless-next-scripts',
+                cwd: process.cwd(),
               },
         },
         {
@@ -138,7 +138,7 @@ describe('initValidObjectsScripts', () => {
           config:
               {
                 env: omit(Object.assign({}, nextEnv, process.env), ['SECRET_KEY']),
-                cwd: '/Users/sl-1/Documents/serverless-next-scripts/server',
+                cwd: process.cwd() + '/server',
               },
         },
       ])

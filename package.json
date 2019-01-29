@@ -1,6 +1,6 @@
 {
   "name": "serverless-scripts-env",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "plugin serverless to help process.env with nextjs",
   "main": "index.js",
   "repository": "git@github.com:UnlyEd/serverless-next-scripts.git",

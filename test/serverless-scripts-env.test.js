@@ -45,7 +45,7 @@ describe('@unly/serverless-scripts-env', () => {
           config:
               {
                 env: Object.assign({}, process.env),
-                cwd: '/Users/sl-1/Documents/serverless-next-scripts/server',
+                cwd: process.cwd(),
               },
         })
       );
