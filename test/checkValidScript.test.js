@@ -138,7 +138,7 @@ describe('initValidObjectsScripts', () => {
           config:
               {
                 env: omit(Object.assign({}, nextEnv, process.env), ['SECRET_KEY']),
-                cwd: process.cwd() + '/server',
+                cwd: `${process.cwd()}/server`,
               },
         },
       ])

@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.com/UnlyEd/serverless-scripts-env.svg?branch=master)](https://travis-ci.com/UnlyEd/serverless-scripts-env)
+[![Maintainability](https://api.codeclimate.com/v1/badges/66de5557a98caaedd4c3/maintainability)](https://codeclimate.com/github/UnlyEd/serverless-scripts-env/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/66de5557a98caaedd4c3/test_coverage)](https://codeclimate.com/github/UnlyEd/serverless-scripts-env/test_coverage)
 
 # Serverless Scripts Env
 
