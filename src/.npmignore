@@ -1,0 +1,5 @@
+# Don't publish tests
+**/*.test.js
+
+# Don't publish hidden files (like this one)
+**/.*

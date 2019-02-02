@@ -1,6 +1,6 @@
 const Serverless = require('serverless');
-const SeverlessScriptsEnv = require('../index');
-const config = require('./__mocks__/serverlessMocks');
+const SeverlessScriptsEnv = require('./index');
+const config = require('../test/__mocks__/serverlessMocks');
 
 const serverless = (custom) => {
   const sls = new Serverless();

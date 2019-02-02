@@ -8,8 +8,6 @@
 
 This plugin aims to answer a specific need and to simplify the assignment of environment variables with serverless either front-end or back-end.
 
-This plugin officially supports Node.js **6.10** and **8.10**.
-
 <!-- toc -->
 
 - [Installation](#installation)
@@ -24,6 +22,7 @@ This plugin officially supports Node.js **6.10** and **8.10**.
   * [Getting started](#getting-started)
   * [Test](#test)
   * [Releasing and publishing](#releasing-and-publishing)
+- [Node support](#node-support)
 - [License](#license)
 
 <!-- tocstop -->
@@ -157,6 +156,10 @@ yarn releaseAndPublish # Shortcut - Will prompt for bump version, commit, create
 yarn release # Will prompt for bump version, commit, create git tag, push commit/tag
 npm publish # Will publish to NPM
 ```
+
+## Node support
+
+This plugin officially supports Node.js **6.10** and **8.10**.
 
 ## License
 

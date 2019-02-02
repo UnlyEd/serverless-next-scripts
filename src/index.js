@@ -3,8 +3,8 @@
 const BbPromise = require('bluebird');
 const { spawn, exec } = require('child_process');
 
-const { initValidObjectsScripts } = require('./helpers/checkValidScript');
-const log = require('./helpers/console');
+const { initValidObjectsScripts } = require('./checkValidScript');
+const log = require('./console');
 
 class ServerlessNextEnv {
   constructor(serverless) {
