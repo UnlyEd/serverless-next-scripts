@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@unly/cli-confirm": "1.1.1",
+    "@unly/serverless-scripts-env": "1.0.2-beta.0",
     "cli-confirm": "1.0.1",
     "concurrently": "4.1.0",
     "cross-env": "5.2.0",
