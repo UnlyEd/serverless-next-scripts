@@ -1,11 +1,22 @@
 # serverless-scripts-env-example
 
+This is an example about how to configure the plugin and how it works.
+It can also be used to test the plugin and validate its behaviour.
+
+## Getting started
+
+1. `yarn install`
+
 ## Usage
 
-1. Clone this repository
-1. `yarn install`
-1. offline script: `yarn run start`
-1. `Go to localhost:3000 and localhost:3003` to see the difference
-1. `look at the index.js` file in the `server folder` to see that the serverless environment variables are well accessible.
-1. build script: `yarn run package`
+1. `yarn start`
+1. Go to `localhost:3000` (it should display both `public` and `secret` keys)
+1. Go to `localhost:3003` (it should only display the `public` key)
+1. See the difference between both outputs
+
+## Packaging
+
+If needed, you can 
+
+1. `yarn package`
 

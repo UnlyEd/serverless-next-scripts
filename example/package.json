@@ -18,7 +18,7 @@
     "webpack-node-externals": "1.7.2"
   },
   "dependencies": {
-    "express": "4.16.4",
-    "serverless-scripts-env": "UnlyEd/serverless-next-scripts.git#v1.0.0_fix_refactor_plugin"
+    "@unly/serverless-scripts-env": "1.0.2-beta.0",
+    "express": "4.16.4"
   }
 }
