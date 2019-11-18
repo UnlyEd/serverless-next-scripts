@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "serverless offline",
-    "package": "sls package"
+    "package": "sls package",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "author": "unlyEd",
   "license": "MIT",
@@ -14,11 +16,13 @@
     "serverless": "1.32",
     "serverless-offline": "4.1.3",
     "serverless-webpack": "5.2.0",
-    "webpack": "3.12.0",
+    "webpack": "4.0.0",
     "webpack-node-externals": "1.7.2"
   },
   "dependencies": {
     "@unly/serverless-scripts-env": "1.0.2-beta.0",
-    "express": "4.16.4"
-  }
+    "express": "4.16.4",
+    "snyk": "^1.248.0"
+  },
+  "snyk": true
 }
