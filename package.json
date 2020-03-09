@@ -51,7 +51,7 @@
     "cli-confirm": "1.0.1",
     "concurrently": "4.1.0",
     "cross-env": "5.2.0",
-    "eslint": "4.19.1",
+    "eslint": "5.0.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14",
     "eslint-watch": "4.0.2",
